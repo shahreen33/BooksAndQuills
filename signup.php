@@ -9,6 +9,8 @@
 </head>
 <body>
 <?php
+include "UserFactory.php";
+$NewUserFactory = new UserFactory();
 require('db.php');
 // If form submitted, insert values into the database.
 if (isset($_REQUEST['name'])){
@@ -22,30 +24,19 @@ if (isset($_REQUEST['name'])){
         $id = stripslashes($_REQUEST['id']);
         //escapes special characters in a string
 	$id = mysqli_real_escape_string($con,$id);
-        $query = "SELECT UserId FROM users WHERE UserId='$id'";
-         $result = mysqli_query($con,$query);
-         $count = mysqli_num_rows($result);
-        
-         if($count!=0){
-             $iderror = true;
-         }
-         
 	$email = stripslashes($_REQUEST['email']);
 	$email = mysqli_real_escape_string($con,$email);
-        $query = "SELECT Email FROM users WHERE Email='$email'";
-         $result = mysqli_query($con,$query);
-         $count = mysqli_num_rows($result);
-         if($count != 0)
-             $emailerror = true;
+  
 	$password = stripslashes($_REQUEST['password']);
 	$password = mysqli_real_escape_string($con,$password);
-       // $password = hash('sha256', $password);
-        $contact_no = stripslashes($_REQUEST['contact_no']);
-	$contact_no = mysqli_real_escape_string($con,$contact_no);
-      
-        $query = "INSERT into users (Name, UserID, Email, Password, ContactNo) VALUES ('$name','$id', '$email', '.md5($password).', '$contact_no')";
-        $result = mysqli_query($con,$query);
-        if($result && !$iderror && !$emailerror){
+        
+        $type = $_REQUEST['type'];
+        
+        
+        $NewUser = $NewUserFactory->getUser($name, $id, $email,$password,$type);
+        $success = $NewUser->insertUser($NewUser->getName(),$NewUser->getId(),$NewUser->getEmail(),$NewUser->getPassword(),$NewUser->type);
+     
+        if($success){
             echo "<div class='form'>
 <h1>You are registered successfully.</h1>
 <br/>Click here to <a href='login.php'>Login</a></div>";
@@ -53,29 +44,10 @@ if (isset($_REQUEST['name'])){
         
         else
         {
-            if($emailerror && $iderror)
-            {
                 echo "<div class='form'>
 <h1>Ooops! There has been a problem!</h1>
-<br/>User name and Email is already in use. </div>";
-            }
-            
-            else if($emailerror && !$iderror)
-            {
-                echo "<div class='form'>
-<h1>Ooops! There has been a problem!</h1>
-<br/>Email is already in use. </div>";
-            }
-            
-            else if(!$emailerror && $iderror)
-            {
-                
-                        echo "<div class='form'>
-        <h1>Ooops! There has been a problem!</h1>
-        <br/>User name is already in use. </div>";
-                    
-            }
-            
+<br/>User name or Email is already in use. </div>";
+   
             echo "<br/>Click here to <a href='signup.php'>Sign up</a></div>";
         }
     }else{
@@ -88,7 +60,8 @@ if (isset($_REQUEST['name'])){
             <br> <input type="text" name="id" placeholder="User Name" required /><br>
             <br><input type="email" name="email" placeholder="Email" required /><br>
             <br><input type="password" name="password" placeholder="Password  (Must be more than 6 characters)" required /><br>
-            <br><input type="text" name="contact_no" placeholder="Contact Number" required /><br>
+            <br> <input type="radio" name="type" value="General"> General<br>
+            <br> <input type="radio" name="type" value="Seller" > Seller<br>
             <br><input type="submit" name="submit" value="Sign Up" /> 
             </form>
             </div>

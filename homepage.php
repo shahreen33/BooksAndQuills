@@ -1,30 +1,20 @@
+<?php
+//include auth.php file on all secure pages
+include("auth.php");
+?>
 <!DOCTYPE html>
 <html>
-    <head>
-        
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="wss.css">
-        <link rel="stylesheet" href="my.css">
-        <title>Books and Quills - Home</title>
-        
-    </head>
-    <body>
-        <h1>BOOKS & QUILLS</h1>
-        <form action="results.php">
-        <input type="text" name="fname" required placeholder="Search by books">
-      
-        </form><br>
-        <form action="user.php">
-        <input type="text" name="fname1" required placeholder="Search by user">
-        <!--<input type="submit" value="Search">-->
-        </form>
-        <br> <br> <br>
-        <a href="signup.php" class="button">SIGN UP</a>
-        <br>
-        <br>
-        &ensp;Already have an account?
-        <br>
-        <a href="login.php" class="button">LOG IN</a>
-        
-    </body>
+<head>
+<meta charset="utf-8">
+<title>Books and Quills - Home</title>
+<link rel="stylesheet" href="my.css" />
+</head>
+<body>
+<h1>BOOKS & QUILLS</h1>
+<h2>Welcome <?php echo $_SESSION['id']; ?>!</h2>
+<br><input name="Add A book" type="Add A book" value="Add A book" /><br>
+
+<a href="logout.php">Logout</a>
+
+</body>
 </html>
