@@ -1,0 +1,2 @@
+Factory pattern - user insertion in database -> General User (Boi kinte parbe, ar dekhte parbe) , Seller (General + Boi sell) 
+Abstract factory - maybe user + book
