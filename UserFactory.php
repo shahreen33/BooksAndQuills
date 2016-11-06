@@ -8,6 +8,23 @@ include "User.php";
 
 class UserFactory
 {
+    private static $SingleUserFactory;
+ 
+    
+    public static function getInstance()
+    {
+        if (null === static::$SingleUserFactory) {
+            static::$SingleUserFactory = new static();
+        }
+        
+        return static::$SingleUserFactory;
+    }
+
+
+
+
+
+
     function getUser($name, $id, $email, $password,$type)
     {
         if($type == "General"){

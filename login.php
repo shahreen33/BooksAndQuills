@@ -25,6 +25,7 @@ if (isset($_POST['id'])){
 	$rows = mysqli_num_rows($result);
         if($rows==1){
 	    $_SESSION['id'] = $id;
+           
             // Redirect user to index.php
 	    header("Location: homepage.php");
          }else{

@@ -10,14 +10,12 @@
 <body>
 <?php
 include "UserFactory.php";
-$NewUserFactory = new UserFactory();
+$NewUserFactory = UserFactory::getInstance();
 require('db.php');
 // If form submitted, insert values into the database.
 if (isset($_REQUEST['name'])){
         // removes backslashes
-        $iderror = false;
-        $emailerror = false;
-        $count = 0;
+      
 	$name = stripslashes($_REQUEST['name']);
         //escapes special characters in a string
 	$name = mysqli_real_escape_string($con,$name); 

@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+if(isset($_SESSION["id"]))
+{
+    ob_start();
+    header('Location: homepage.php');
+    ob_end_flush();
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
