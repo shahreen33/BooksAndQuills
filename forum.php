@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="my.css">
+        <link rel="stylesheet" href="mycs.css">
         <meta charset="UTF-8">
         <title>BOOKS & QUILLS</title>
     </head>
     <body>
-        <?php
-        echo "<h2>Search results for '" . $_GET["fname1"] . "':</h2>";
-        ?>
+        <h2>User Forum</h2>
     </body>
 </html>
+

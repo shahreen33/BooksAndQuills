@@ -10,13 +10,15 @@ include('db.php');
 abstract class Book
 {
     private $name= "";
+    private $author = "";
     private $genre = "";
     private $pagecount = "" ;
-    private $pulishers = "";
+    private $publishers = "";
     private $synopsis ="" ;
     
-    function __construct($name,$genre,$pagecount,$publishers, $synopsis) {
+    function __construct($name,$author, $genre,$pagecount,$publishers, $synopsis) {
         $this->name = $name;
+        $this->author = $author;
         $this->genre = $genre;
         $this->pagecount = $pagecount;
         $this->publishers = $publishers;
@@ -26,6 +28,11 @@ abstract class Book
     function getName()
     {
         return $this->name;
+    }
+    
+    function getAuthor()
+    {
+        return $this->author;
     }
     
      function getGenre()
@@ -45,7 +52,7 @@ abstract class Book
     {
         return $this->synopsis;
     }
-     abstract function insertBook($name,$genre,$pagecount,$publishers, $synopsis);
+     abstract function insertBook($name, $author, $genre,$pagecount,$publishers, $synopsis);
     
   
     
@@ -53,8 +60,17 @@ abstract class Book
 
 class Books extends Book{
     
-     function insertBook($name,$genre,$pagecount,$publishers, $synopsis)
+     function insertBook($name, $author,$genre,$pagecount,$publishers, $synopsis)
      {
+         $first= str_replace(' ', '', $name);
+         $first = preg_replace('/\s+/', '', $first);
+         
+                  
+         $second = str_replace(' ', '', $author);
+         $second = preg_replace('/\s+/', '', $second);
+         
+         $book_author = $first . '_' . $second;
+         
         $error = false;
         
         global $con;
@@ -62,14 +78,16 @@ class Books extends Book{
          $result1 = mysqli_query($con,$query1);
          $count = mysqli_num_rows($result1);
         
-         if($count!=0){
+         if($count>0){
              $error = true;
          }
-         
+       
         
-        $query = "INSERT into books (Name, Genre, PageCount, Publishers, Synopsis) VALUES ('$name','$genre', '$pagecount', '$publishers', '$synopsis')";
+        $query = "INSERT INTO books(Name, Author, Genre, PageCount, Publishers, Synopsis, Book_Author) VALUES ('$name', '$author','$genre', '$pagecount','$publishers','$synopsis' ,'$book_author')";
         $result = mysqli_query($con,$query);
+        echo (int)$error;
         if($result && !$error ){
+            
            return true;
         }
         

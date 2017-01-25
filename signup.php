@@ -27,28 +27,35 @@ if (isset($_REQUEST['name'])){
   
 	$password = stripslashes($_REQUEST['password']);
 	$password = mysqli_real_escape_string($con,$password);
-        
+        $password = sha1($password);
+       
         $type = $_REQUEST['type'];
         
         
         $NewUser = $NewUserFactory->getUser($name, $id, $email,$password,$type);
-        $success = $NewUser->insertUser($NewUser->getName(),$NewUser->getId(),$NewUser->getEmail(),$NewUser->getPassword(),$NewUser->type);
-     
-        if($success){
-            echo "<div class='form'>
-<h1>You are registered successfully.</h1>
-<br/>Click here to <a href='login.php'>Login</a></div>";
-        }
+        $success = $NewUser->insertUser($NewUser->getName(),$NewUser->getId(),$NewUser->getEmail(),$NewUser->getPassword(), $NewUser->type);
         
-        else
-        {
+        if($success){
+       
+         
+                       $NewUser->setState(1);
+                       echo "<div class='form'>
+                            <h1>You are registered successfully.</h1>
+                            <h3>An email was sent to your account for verification. Please click on the link provided there and verify your account to log in.</h3>
+                            <br/>Click here to <a href='login.php'>Login</a></div>";
+        
+     }
+      else
+      {
                 echo "<div class='form'>
-<h1>Ooops! There has been a problem!</h1>
-<br/>User name or Email is already in use. </div>";
+                        <h1>Ooops! There has been a problem!</h1>
+                        <br/>User name or Email is already in use. </div>";
    
-            echo "<br/>Click here to <a href='signup.php'>Sign up</a></div>";
-        }
-    }else{
+                echo "<br/>Click here to <a href='signup.php'>Sign up</a></div>";
+       }
+}
+   
+    else{
             ?>
             <div class="form">
             <h1>Sign Up</h1>
@@ -58,8 +65,9 @@ if (isset($_REQUEST['name'])){
             <br> <input type="text" name="id" placeholder="User Name" required /><br>
             <br><input type="email" name="email" placeholder="Email" required /><br>
             <br><input type="password" name="password" placeholder="Password  (Must be more than 6 characters)" required /><br>
-            <br> <input type="radio" name="type" value="General"> General<br>
-            <br> <input type="radio" name="type" value="Seller" > Seller<br>
+            <br><h3>What type of User do you want to be?</h3>
+            <br> <input type="radio" name="type" value="General"/> <b>General</b> <br>
+            <br> <input type="radio" name="type" value="Seller"/> <b> Seller</b> <br>
             <br><input type="submit" name="submit" value="Sign Up" /> 
             </form>
             </div>

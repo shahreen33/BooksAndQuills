@@ -19,9 +19,12 @@ if (isset($_REQUEST['name'])){
 	$name = stripslashes($_REQUEST['name']);
         //escapes special characters in a string
 	$name = mysqli_real_escape_string($con,$name); 
+        $author = striplashes($_REQUEST['author']);
+        $author = mysqli_real_escape_string($con,$author); 
         $genre = stripslashes($_REQUEST['genre']);
         //escapes special characters in a string
 	$genre = mysqli_real_escape_string($con,$genre);
+        $genre = strtolower($genre);
 	$pagecount = stripslashes($_REQUEST['pagecount']);
 	$pagecount = mysqli_real_escape_string($con,$pagecount);
   
@@ -33,8 +36,8 @@ if (isset($_REQUEST['name'])){
         
         
         
-        $NewBook = $NewBookFactory->getBook($name, $genre, $pagecount,$publishers,$synopsis);
-        $success = $NewBook->insertBook($NewBook->getName(),$NewBook->getGenre(),$NewBook->getPageCount(),$NewBook->getPublishers(),$NewBook->getSynopsis());
+        $NewBook = $NewBookFactory->getBook($name,$author, $genre, $pagecount,$publishers,$synopsis);
+        $success = $NewBook->insertBook($NewBook->getName(), $NewBook->getAuthor(), $NewBook->getGenre(),$NewBook->getPageCount(),$NewBook->getPublishers(),$NewBook->getSynopsis());
      
         if($success){
             echo "<div class='form'>
@@ -56,6 +59,7 @@ if (isset($_REQUEST['name'])){
             <h1>Add A book</h1>
             <form name="bookInsertion" action="" method="post">
             <br> <input type="text" name="name" placeholder="Name" required /><br>
+            <br> <input type="text" name="author" placeholder="Author" required /><br>
             <br> <input type="text" name="genre" placeholder="genre" required /><br>
             <br><input type="text" name="pagecount" placeholder="Pages" required /><br>
             <br><input type="text" name="publishers" placeholder="Published by" required /><br>

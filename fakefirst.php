@@ -1,11 +1,7 @@
 <!DOCTYPE html>
-<?php
-include 'auth.php';
-require 'db.php';
-?>
 <html>
     <head>
-<title>Books And Quills - Home</title>
+<title>My page</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="wss.css">
 <link rel="stylesheet" href="newcss.css">
@@ -99,14 +95,14 @@ li a:hover:not(.active) {
 
   
 #conmain {
-  width: 900px;
+  width: 950px;
   height: 700px;
   position:  static;
   /*background-image: url("back.jpg");*/
   border: none;
   padding-left: 20px;
   padding-right: 20px;
-  margin-left: -10px;
+  margin-left: 0px;
   margin-top: 160px;
   background-color: #ccc;
   background-image: url("conback.jpg");
@@ -223,36 +219,6 @@ margin-top: 12px;}
     margin-left: 220px;
     padding-top: 150px;
 }
- h7{
-              font-size: 15px;
-            }
-            h8{
-                font-size: 18px;
-            }
-
-            table {
-
-border: none;
-    border-collapse: collapse;
-    width: 100%;
-    padding-left: 0px;
-    background-color:  #ffcc66;
-    border: 1px solid black;
-}
-
-th {
-    height: 20px;
-text-align: center;
-padding: 0px 0px 0px 0px;
-font-size: 25px;
-
-}
-
-td{
-text-align: left;
-padding: 0px 5px 5px 5px;
-}
-
 /* Remove margins from "page content" on small screens */
 @media only screen and (max-width: 600px) {#main {margin-left: 0}}
 </style>
@@ -317,13 +283,12 @@ padding: 0px 5px 5px 5px;
           <img src="ic.png" alt="prof" width="80" height="80">
         <div class="dropdown-content">
         <div class="dropdown-content" style="left:0;">
-            <a href="userprof.php?id=">Go to your profile</a>
+            <a href="userprof.php">Go to your profile</a>
             <a href="sett.php">Settings</a>
-            <a href="logout.php">Log out</a>
+            <a href="index.php">Log out</a>
         </div>
     </div>
 </div>
-      
       
       <div style="float:right;">
           <br>
@@ -335,19 +300,9 @@ padding: 0px 5px 5px 5px;
       </div>
       <div style="float:right;">
           <br>
-          <form action="user_results.php">
-                <input type="text" name="fname" required placeholder="Search by user" >
+            <form action="results.php">
+                <input type="text" name="fname1" required placeholder="Search by user" >
             </form>
-      </div>
-          
-            
-      <div style="float:right;">
-          <br>
-          <form action="#Bbook">
-          <input type="submit" name="submit" value="Search by category" >
-            &emsp;
-</form>
-          
       </div>
      <!-- <div id="myModal" class="modal">
 
@@ -377,7 +332,7 @@ padding: 0px 5px 5px 5px;
 
 
     <!--<h1 class="w3-jumbo"><span class="w3-hide-small"></span>BOOKS AND QUILLS</h1>-->
-  <a href="index.php">
+ <a href="#">
   <img src="newl3.png" alt="log" style="width:40%">
  </a>
     <!--<img src="/w3images/man_smoke.jpg" alt="boy" class="w3-image" width="992" height="1108">-->
@@ -387,8 +342,9 @@ padding: 0px 5px 5px 5px;
   
 <ul>
     <li><a href="#home">Home</a></li>
+    <li><a href="#Recent">Recently added books</a></li>
     <li><a href="#Abook">Add a book</a></li>
-    <li><a href="#Bbook">Categorised Search</a></li>
+    <li><a href="#Bbook">Buy a book</a></li>
 </ul>
   
   <!--<br><br><br>
@@ -468,87 +424,43 @@ function showSlides() {
 
   
   <!-- Portfolio Section -->
- 
+  <div class=" w3-content w3-padding-8" id="Recent">
+      <div id="conmain">
+      <br><h2 class="w3-text-black">Recently added books by users</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <!-- Grid for photos -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half">
+        <img src="/w3images/wedding.jpg" style="width:100%">
+        <img src="/w3images/rocks.jpg" style="width:100%">
+        <img src="/w3images/sailboat.jpg" style="width:100%">
+      </div>
+
+      <!--<div class="w3-half">
+        <img src="/w3images/underwater.jpg" style="width:100%">
+        <img src="/w3images/chef.jpg" style="width:100%">
+        <img src="/w3images/wedding.jpg" style="width:100%">
+        <img src="/w3images/p6.jpg" style="width:100%">
+      </div>-->
+    <!-- End photo grid -->
+    </div>
+      </div>
+  <!-- End Portfolio Section -->
+  </div>
 
   <!-- Contact Section -->
   <div class="w3-content w3-padding-8 " id="Abook">
       <div id="conform">
-         <?php
-include "BookFactory.php";
-$NewBookFactory = BookFactory::getInstance();
-require('db.php');
-// If form submitted, insert values into the database.
-if (isset($_REQUEST['name'])){
-        // removes backslashes
-                $name = stripslashes($_REQUEST['name']);
-        //escapes special characters in a string
-	$name = mysqli_real_escape_string($con,$name); 
-        $author = stripslashes($_REQUEST['author']);
-  
-        $author = mysqli_real_escape_string($con,$author); 
-        $genre = stripslashes($_REQUEST['genre']);
-        //escapes special characters in a string
-	$genre = mysqli_real_escape_string($con,$genre);
-	$pagecount = stripslashes($_REQUEST['pagecount']);
-	$pagecount = mysqli_real_escape_string($con,$pagecount);
-  
-	$publishers = stripslashes($_REQUEST['publishers']);
-	$publishers = mysqli_real_escape_string($con,$publishers);
-        
-        $synopsis = stripslashes($_REQUEST['synopsis']);
-	$synopsis = mysqli_real_escape_string($con,$synopsis);
-        
-        
-        
-        $NewBook = $NewBookFactory->getBook($name,$author, $genre, $pagecount,$publishers,$synopsis);
-        $success = $NewBook->insertBook($NewBook->getName(), $NewBook->getAuthor(), $NewBook->getGenre(),$NewBook->getPageCount(),$NewBook->getPublishers(),$NewBook->getSynopsis());
-     
-     
-        if($success){
-            echo "<div class='form'>
-<h1>Your book has been inserted successfully.</h1>
-<br/>Click here to <a href='homepage.php'>Go to Home</a></div>";
-        } 
-        
-        else
-        {
-                echo "<div class='form'>
-<h3>Ooops! There has been a problem!</h3>
-<h3>Book name is already in Database.</h3> </div>";
-                ?>
-             <div class="form">
+      <br><h2>Add a book</h2>
             <form name="bookInsertion" action="" method="post">
-            <br> <input type="text" name="name" placeholder="Name" required /><br>
-            <br> <input type="text" name="author" placeholder="Author" required /><br>
-            <br> <input type="text" name="genre" placeholder="Genre" required /><br>
+                <br> <input type="text" name="name" placeholder="Name" required /><br>
+                <br> <input type="text" name="genre" placeholder="genre" required /><br>
             <br><input type="text" name="pagecount" placeholder="Pages" required /><br>
             <br><input type="text" name="publishers" placeholder="Published by" required /><br>
             <br><input type="text" name="synopsis" placeholder="Synopsis" /><br>
-            <br><input type="submit" name="submit" value="Add this book" /> 
+            <br><input  type="submit" name="submit" value="Add this book" /> 
             </form>
-            </div>
-            <!--<a href="signup.php" class="button">SIGN UP</a>-->
-         <?php   
-        }
-    }
-    else{
-            ?>
-            <div class="form">
-            <h1>Add A book</h1>
-            <form name="bookInsertion" action="" method="post">
-            <br> <input type="text" name="name" placeholder="Name" required /><br>
-            <br> <input type="text" name="author" placeholder="Author" required /><br>
-            <br> <input type="text" name="genre" placeholder="Genre" required /><br>
-            <br><input type="text" name="pagecount" placeholder="Pages" required /><br>
-            <br><input type="text" name="publishers" placeholder="Published by" required /><br>
-            <br><input type="text" name="synopsis" placeholder="Synopsis" /><br>
-            <br><input type="submit" name="submit" value="Add this book" /> 
-            </form>
-            </div>
-            <!--<a href="signup.php" class="button">SIGN UP</a>-->
-            <?php 
-            
-    } ?>
             
     <!--<h2 class="w3-text-light-grey">Contact Me</h2>
     <hr style="width:200px" class="w3-opacity">
@@ -573,40 +485,11 @@ if (isset($_REQUEST['name'])){
   </div>
   <div class="w3-padding-8 w3-content" id="Bbook">
         <div id="conform">
-            <?php
-        require 'db.php';
-        
-        echo "<h2>Categories</h2>";
-       
-        
-        
-        global $con;
-        $query = "SELECT DISTINCT Genre AS Genre FROM books ORDER BY Genre";
-        $result = mysqli_query($con, $query);
-        mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-        foreach($result as $row)
-        {
-            $Gname = $row['Genre'];
-            $query = "SELECT COUNT(*) AS count FROM books WHERE Genre='$Gname'";
-            $res= mysqli_query($con, $query);
-            $r = mysqli_fetch_array($res);
-            $count = $r['count'];
-            $link = "showBooksofCategory.php?Cat_id=".$Gname;
-                echo "<table>";
-                echo "<tr>";
-                echo "<th><a href=$link><h3>$Gname($count)</h3></a></th>";
-               echo "</tr>";
-               echo "</table>";
-                
-        }
-        
-        ?>
         </div>
   </div>
   
     <!-- Footer -->
-<!--  <footer class="w3-content w3-border-blue-gray w3-wide w3-padding-64 w3-text-black w3-xlarge ">
+  <footer class="w3-content w3-border-blue-gray w3-wide w3-padding-64 w3-text-black w3-xlarge ">
     <a href="#" class="w3-hover-text-indigo"><i class="fa fa-facebook-official"></i></a>
     <a href="#" class="w3-hover-text-red"><i class="fa fa-pinterest-p"></i></a>
     <a href="#" class="w3-hover-text-light-blue"><i class="fa fa-twitter"></i></a>
@@ -615,8 +498,8 @@ if (isset($_REQUEST['name'])){
     <p class="w3-large">Want to know <a href="about.php" class="w3-hover-text-green">about us?</a></p>
     <p class="w3-large">Have questions? Take a look at the <a href="forum.php" class="w3-hover-text-green">FAQ section</a></p>
 
-     End footer 
-  </footer>-->
+    <!-- End footer -->
+  </footer>
 
 <!-- END PAGE CONTENT -->
 

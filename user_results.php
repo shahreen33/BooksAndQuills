@@ -53,7 +53,7 @@ padding: 0px 5px 5px 5px;
         
         
         global $con;
-        $query = "SELECT * FROM books WHERE Name LIKE '$key'";
+        $query = "SELECT * FROM users WHERE Name LIKE '$key'";
         $result = mysqli_query($con, $query);
         mysqli_fetch_all($result, MYSQLI_ASSOC);
 //        foreach($result as $tanzir)
@@ -62,38 +62,40 @@ padding: 0px 5px 5px 5px;
 //        }
 //        echo " honkahonka ";
         $adapt_rows = new adapter();
-        $result = $adapt_rows->adapt($result, $prev_key, 1);
+        $result = $adapt_rows->adapt($result, $prev_key, 0);
         
 //        foreach($result as $tanzir)
 //        {
 //            echo $tanzir['Name']."    #    ";
 //        }
 //        
+        $n = count($result);
        if($result=="No results found!")
        {
            echo "<h3>$result</h3>";
        }
        else
        {
-        $n = count($result);
-        
         foreach($result as $tanzir)
         {
             
-            $link = "StrategyPatternDemo.php?show=books&id=".$tanzir['Book_Author'];
-            
-            
-     echo "<table>";
-     echo "<tr>";
-      $id = $tanzir['Book_Author'];
-         $query = "SELECT Imagepath from books WHERE Book_Author = '$id'";
+            $link = "StrategyPatternDemo.php?show=user&id=".$tanzir['UserID'];
+            $type = $tanzir['Type'];
+            if($type == 1)
+                $type = "General";
+            else
+                $type = "Seller";
+            echo "<table>";
+            echo "<tr>";
+            $id = $tanzir['UserID'];
+         $query = "SELECT Imagepath from users WHERE UserID = '$id'";
          $result1 = mysqli_query($con,$query);
          $rows = mysqli_fetch_array($result1);
          $image_id = $rows['Imagepath'];
          
          if($image_id=='')
          {
-             echo "<th align=\"left\"><img src=\"boi.png\" alt=\"avatar\" style=\"width:100px;height:100px;>\"></th>";
+             echo "<th align=\"left\"><img src=\"sure.png\" alt=\"avatar\" style=\"width:100px;height:100px;>\"></th>";
          }
              
          else
@@ -101,8 +103,8 @@ padding: 0px 5px 5px 5px;
               echo "<th align=\"left\"><img src='".$image_id."' height='100' width='100' ></th>";
           //  echo "<th align=\"left\"><img src=\".$image_id.\"style=\"width:100px;height:100px;>\"></th>";
           }
-     //echo "<th align=\"left\"><img src=\"sure.png\" alt=\"avatar\" style=\"width:100px;height:100px;>\"></th>";
-     echo "<th>".$tanzir['Name']."<h7>&ensp;by ".$tanzir['Author']."</th>";
+    // echo "<th align=\"left\"><img src=\"sure.png\" alt=\"avatar\" style=\"width:100px;height:100px;>\"></th>";
+     echo "<th>".$tanzir['Name']."<h7>&ensp;Type: ".$type."</th>";
      echo "<th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>";
      echo "<th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>";
      echo "<th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<br><a href=$link><h8>See details</h8></a></th>";
@@ -115,7 +117,9 @@ padding: 0px 5px 5px 5px;
      echo "</table>";
      //echo "<br>";
         }
+        
        }
+        
         ?>
     </body>
 </html>

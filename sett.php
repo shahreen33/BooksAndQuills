@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <?php
-include 'auth.php';
+include "auth.php";
 require 'db.php';
+
 ?>
 <html>
     <head>
-<title>Books And Quills - Home</title>
+<title>Settings</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="wss.css">
 <link rel="stylesheet" href="newcss.css">
@@ -14,7 +15,7 @@ require 'db.php';
 <link rel="stylesheet" href="prof.css">
 <link rel="stylesheet" href="drop.css">
 <link rel="stylesheet" href="profmod.css">
-<link rel="stylesheet" href="slide.css">
+
 
 
 <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
@@ -29,13 +30,12 @@ require 'db.php';
     list-style-type: none;
     margin: 0;
     padding: 0;
-    padding-top: 20px;
+    /*padding-top: 20px;*/
     width: 200px;
     height: 700px;
     position: fixed;
     background-color: coral;
     margin-top: 160px;
-    /*background-image: url("conback.jpg");*/
 }
 
 li a {
@@ -48,12 +48,12 @@ li a {
 }
 
 li a.active {
-    background-color:  #993300;
+    background-color: #660033;
     color: white;
 }
 
 li a:hover:not(.active) {
-    background-color: #993300;
+    background-color: #660033;
     color: white;
 }
 #conform {
@@ -62,43 +62,15 @@ li a:hover:not(.active) {
   position:  static;
   /*background-image: url("back.jpg");*/
   border: none;
+  padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
-  margin-left: 25px;
-  margin-top: 160px;
-  background-color: #ccc;
-  background-image: url("conback.jpg");
-
-}
-#conintro {
-  width: 900px;
-  height: 700px;
-  position:  static;
-  /*background-image: url("back.jpg");*/
-  border: none;
-  /*padding-left: 20px;
-  padding-right: 20px;*/
-  margin-left: -10px;
-  margin-top: 20px;
-  background-color: lightblue;
-  /*background-image: url("conback.jpg");*/
-}
-#conintrochild {
-  width: 400px;
-  height: 700px;
-  position: static;
-  /*background-image: url("back.jpg");*/
-  border: none;
-  /*padding-left: 20px;
-  padding-right: 20px;*/
-  margin-left: 500px;
-  margin-top: -723px;
+  margin-left: -20px;
+  margin-top: 150px;
   background-color: cornflowerblue;
-  /*background-image: url("conback.jpg");*/
+  font-size: 30px;
 }
-
-  
-#conmain {
+#conins {
   width: 900px;
   height: 700px;
   position:  static;
@@ -107,35 +79,44 @@ li a:hover:not(.active) {
   padding-left: 20px;
   padding-right: 20px;
   margin-left: -10px;
-  margin-top: 160px;
+  margin-top: 10px;
   background-color: #ccc;
-  background-image: url("conback.jpg");
+}
+#conedit{
+  width: 900px;
+  height: 700px;
+  position:  static;
+  /*background-image: url("back.jpg");*/
+  border: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: -20px;
+  margin-top: 150px;
+  background-color: white;
 }
 #conright {
-    text-align: left;
-  width: 230px;
+  width: 250px;
   height: 768px;
   position: fixed;
   /*background-image: url("back.jpg");*/
   border: none;
-  padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
   margin-left: 1120px;
   margin-top: 160px;
-  background-color: cornflowerblue;
-  /*background-image: url("conback.jpg");*/
-  color: black;
+  background-color: coral;
 }
 #content {
   width: 1350px;
   height: 160px;
   position: fixed;
-  /*background-color: #330000  ;*/
+  background-color: #330000  ;
   background-image: url("contentholder.png");
+ 
   border: none;
   padding-left: 0px;
   margin-left: 0px;
+  margin-top: 0px;
   padding-left: 5px;
  
 }
@@ -154,6 +135,16 @@ li a:hover:not(.active) {
     padding: 10px 15px 10px 15px;
 }
 
+
+    .mySlides {
+        display:none;
+        position: relative; 
+    width: 1400px; 
+    height: 400px; 
+    padding: 0px; 
+    margin-top: 160px;
+   
+    }
      .dropdown {
          margin-top: 5px;
     position: relative;
@@ -202,7 +193,7 @@ h2{
 body, h1,h2,h3,h4,h5,h6{font-family: "Montserrat", sans-serif;          
 }
 p{
-    color: black;
+    color: white;
 }
 .w3-row-padding img {margin-bottom: 12px;
 margin-top: 12px;}
@@ -213,46 +204,16 @@ margin-top: 12px;}
 
 /* Add a left margin to the "page content" that matches the width of the sidenav (120px) */
 #main {margin-left: 0px;}
-#Recent{
+#EditProfile{
+    
+    margin-left: 0px;
+    padding-top: 150px;
+}
+#instructions{
     
     margin-left: 220px;
     padding-top: 150px;
 }
-#home{
-    
-    margin-left: 220px;
-    padding-top: 150px;
-}
- h7{
-              font-size: 15px;
-            }
-            h8{
-                font-size: 18px;
-            }
-
-            table {
-
-border: none;
-    border-collapse: collapse;
-    width: 100%;
-    padding-left: 0px;
-    background-color:  #ffcc66;
-    border: 1px solid black;
-}
-
-th {
-    height: 20px;
-text-align: center;
-padding: 0px 0px 0px 0px;
-font-size: 25px;
-
-}
-
-td{
-text-align: left;
-padding: 0px 5px 5px 5px;
-}
-
 /* Remove margins from "page content" on small screens */
 @media only screen and (max-width: 600px) {#main {margin-left: 0}}
 </style>
@@ -299,9 +260,6 @@ padding: 0px 5px 5px 5px;
 </div>-->
 
 <div id="conright">
-    <p class="w3-large">Want to know <a href="about.php" class="w3-hover-text-brown">about us?</a></p>
-    <p class="w3-large">Have questions? Take a look at the <a href="forum.php" class="w3-hover-text-brown">FAQ section</a></p>
-
   </div>
 
 <!-- Page Content -->
@@ -312,7 +270,7 @@ padding: 0px 5px 5px 5px;
       <div id="content">
 
        
-      <div class="dropdown" style="float:right;">
+    <div class="dropdown" style="float:right;">
                    
           <img src="ic.png" alt="prof" width="80" height="80">
         <div class="dropdown-content">
@@ -335,19 +293,9 @@ padding: 0px 5px 5px 5px;
       </div>
       <div style="float:right;">
           <br>
-          <form action="user_results.php">
-                <input type="text" name="fname" required placeholder="Search by user" >
+            <form action="results.php">
+                <input type="text" name="fname1" required placeholder="Search by user" >
             </form>
-      </div>
-          
-            
-      <div style="float:right;">
-          <br>
-          <form action="#Bbook">
-          <input type="submit" name="submit" value="Search by category" >
-            &emsp;
-</form>
-          
       </div>
      <!-- <div id="myModal" class="modal">
 
@@ -377,18 +325,20 @@ padding: 0px 5px 5px 5px;
 
 
     <!--<h1 class="w3-jumbo"><span class="w3-hide-small"></span>BOOKS AND QUILLS</h1>-->
-  <a href="index.php">
+ <a href="index.php">
   <img src="newl3.png" alt="log" style="width:40%">
  </a>
+  
     <!--<img src="/w3images/man_smoke.jpg" alt="boy" class="w3-image" width="992" height="1108">-->
       </div>
   </header>
   
   
 <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#Abook">Add a book</a></li>
-    <li><a href="#Bbook">Categorised Search</a></li>
+    <li><a href="#instructions">Instructions</a></li>
+    <li><a href="#EditProfile">Edit your profile</a></li>
+    <li><a href="#UpdateAccount">Update your account</a></li>
+    <li><li><a href="#UploadPhoto">Upload your photo</a></li>
 </ul>
   
   <!--<br><br><br>
@@ -401,155 +351,135 @@ padding: 0px 5px 5px 5px;
 <br><br><br><br><br><br>-->
   <!-- About Section -->
   
-  <div class="w3-content" id="home">
-      <div id="conintro">
-<div class="mySlides fade">
-    <img src="combined.png" alt="sl1" style="width:100%">
-  
-</div>
-
-<div class="mySlides fade">
-  <img src="combined1.png" alt="sl2" style="width:100%">
-  
-  
-</div>
-
-<div class="mySlides fade">
-  <img src="combined2.png" alt="sl3" style="width:100%">
-  
-</div>
-          <div class="mySlides fade">
-              <img src="combined3.png" alt="sl4" style="width:100%">
-  
-</div>
-          
-</div>
-<br>
-<!--<div style="text-align:center">
-  <span class="dot"></span>
-  <span class="dot"></span>
-  <span class="dot"></span>i
-  <span class="dot"></span>
-</div>-->
-<script>
-var slideIndex = 0;
-showSlides();
-
-function showSlides() {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    //var dots = document.getElementsByClassName("dot");
-    for (i = 0; i < slides.length; i++) {
-       slides[i].style.display = "none";
-    }
-    slideIndex++;
-    if (slideIndex> slides.length) {slideIndex = 1}
-    
-    slides[slideIndex-1].style.display = "block";
-        setTimeout(showSlides, 3000); // Change image every 2 seconds
-}
-</script>
-
-
-</div>
-      <!--<br><br><h2>Hello there! Welcome to the world of book hoarders!<br>We are here to let you experience one of the most efficient buying and selling services there are. It would mean a lot if you take a trip and let us know how can we be better.<br>Thank you. </h2>
-      <!--<div class="w3-content w3-section" style="max-width:1400px">
-    <img class="mySlides" alt="name_1" src="dula.jpg" style="width:100%">
-    <img class="mySlides" alt="name_2" src="onti.jpg" style="width:100%">
-    <img class="mySlides" alt="name_3" src="rakhi.jpg" style="width:100%">
-    <img class="mySlides" alt="name_4" src="dadi.PNG" style="width:100%">
-</div>
-    <!-- End Grid/Pricing tables -->
-    
-    <!-- Testimonials -->
-    
-  <!-- End About Section -->
-  
 
   
   <!-- Portfolio Section -->
- 
+  
+  <div class="w3-content" id="instructions">
+      <div id="conins">
+          <br><br><h2>Go to "Edit your profile" to change your name or password.<br>Use "Upgrade your account" to change your user type from General to Seller.<br>And "Upload your photo" is pretty self explanatory.<br>Thank you.</h2>
+      
+  <div class="w3-content w3-padding-8 " id="EditProfile">
+      <div id="conedit">
+      <br><h2 class="w3-text-black">Edit your profile information</h2>
+   ` <hr style="width:200px" class="w3-opacity">
+                <?php
+                $id =  $_SESSION['id'];
+                   $query = "SELECT * from users WHERE UserID = '$id'";
+                   $result = mysqli_query($con,$query);
+                   $rows = mysqli_fetch_array($result);
+                   $name = $rows['Name'];
+                   $email = $rows['Email'];
+                   $password = $rows['Password'];
+                   $type = $rows['Type'];
+                   if($type == 1)
+                       $type = 'General';
+                   else
+                       $type = 'Seller';
+
+                if(isset($_REQUEST['name']))
+                {
+                    $name= stripslashes($_REQUEST['name']);
+                    //escapes special characters in a string
+                    $name = mysqli_real_escape_string($con,$name); 
+
+
+
+                    $password = stripslashes($_REQUEST['password']);
+                    $password = mysqli_real_escape_string($con,$password);
+                    $password = sha1($password);
+                     $query =  "UPDATE users SET Password='$password' WHERE UserID = '$id'";
+
+                       $result = mysqli_query($con,$query);
+                        $query =  "UPDATE users SET Name='$name' WHERE UserID = '$id'";
+                       $result = mysqli_query($con,$query);
+                        echo "<div class='form'>
+                                    <h3>Your profile has been updated!</h3></div>";
+                }
+                
+                ?>
+                <h3 color ="black" Edit your profile </h3>
+                 <div class="form">
+                 
+                 <form name="edit profile" action="" method="post">
+                        <br> <input type="text" name="name" placeholder="<?php echo htmlentities($name) ?>" required /><br>
+                        <br> <input type="text" name="id" placeholder="<?php echo htmlentities($id) ?>" readonly /><br>
+                        <br><input type="email" name="email" placeholder="<?php echo htmlentities($email) ?>" readonly /><br>
+                        <br><input type="password" name="password" placeholder="Change your password" required /><br>
+                        <br><input type="submit" name="submit" value="Save changes" /> 
+                        </form>
+                        </div><?php
+
+                
+                ?>
+        
+      </div>
+  <!-- End Portfolio Section -->
+  </div>
 
   <!-- Contact Section -->
-  <div class="w3-content w3-padding-8 " id="Abook">
+  <div class="w3-content w3-padding-8 " id="UpdateAccount">
       <div id="conform">
-         <?php
-include "BookFactory.php";
-$NewBookFactory = BookFactory::getInstance();
-require('db.php');
-// If form submitted, insert values into the database.
-if (isset($_REQUEST['name'])){
-        // removes backslashes
-                $name = stripslashes($_REQUEST['name']);
-        //escapes special characters in a string
-	$name = mysqli_real_escape_string($con,$name); 
-        $author = stripslashes($_REQUEST['author']);
-  
-        $author = mysqli_real_escape_string($con,$author); 
-        $genre = stripslashes($_REQUEST['genre']);
-        //escapes special characters in a string
-	$genre = mysqli_real_escape_string($con,$genre);
-	$pagecount = stripslashes($_REQUEST['pagecount']);
-	$pagecount = mysqli_real_escape_string($con,$pagecount);
-  
-	$publishers = stripslashes($_REQUEST['publishers']);
-	$publishers = mysqli_real_escape_string($con,$publishers);
-        
-        $synopsis = stripslashes($_REQUEST['synopsis']);
-	$synopsis = mysqli_real_escape_string($con,$synopsis);
-        
-        
-        
-        $NewBook = $NewBookFactory->getBook($name,$author, $genre, $pagecount,$publishers,$synopsis);
-        $success = $NewBook->insertBook($NewBook->getName(), $NewBook->getAuthor(), $NewBook->getGenre(),$NewBook->getPageCount(),$NewBook->getPublishers(),$NewBook->getSynopsis());
-     
-     
-        if($success){
-            echo "<div class='form'>
-<h1>Your book has been inserted successfully.</h1>
-<br/>Click here to <a href='homepage.php'>Go to Home</a></div>";
-        } 
-        
+     <?php
+         $id =  $_SESSION['id'];
+       $query = "SELECT * from users WHERE UserID = '$id'";
+       $result = mysqli_query($con,$query);
+       $rows = mysqli_fetch_array($result);
+       $type = $rows['Type'];
+       if($type == 1)
+           $type = 'General';
+       else
+           $type = 'Seller';
+    
+        if($type == 'Seller')
+        {
+            echo "<div class='form'><h2>Your account is already upgraded to a Seller account.</h2></div>";
+        }
         else
         {
-                echo "<div class='form'>
-<h3>Ooops! There has been a problem!</h3>
-<h3>Book name is already in Database.</h3> </div>";
-                ?>
-             <div class="form">
-            <form name="bookInsertion" action="" method="post">
-            <br> <input type="text" name="name" placeholder="Name" required /><br>
-            <br> <input type="text" name="author" placeholder="Author" required /><br>
-            <br> <input type="text" name="genre" placeholder="Genre" required /><br>
-            <br><input type="text" name="pagecount" placeholder="Pages" required /><br>
-            <br><input type="text" name="publishers" placeholder="Published by" required /><br>
-            <br><input type="text" name="synopsis" placeholder="Synopsis" /><br>
-            <br><input type="submit" name="submit" value="Add this book" /> 
-            </form>
-            </div>
-            <!--<a href="signup.php" class="button">SIGN UP</a>-->
-         <?php   
-        }
-    }
-    else{
-            ?>
+         if(isset($_POST['submit']))
+            {
+                $nid = stripslashes($_REQUEST['nid']);
+                $nid = mysqli_real_escape_string($con,$nid);
+                mysqli_query($con, "UPDATE users SET NID='$nid' WHERE UserID='".$id."'");
+                mysqli_query($con, "UPDATE users SET type='2' WHERE UserID='".$id."'");
+                echo "<div class='form'><h3>Your account has been upgraded! Add some books to sell.</div>";
+                
+            }
+            else{
+             ?>
             <div class="form">
-            <h1>Add A book</h1>
-            <form name="bookInsertion" action="" method="post">
-            <br> <input type="text" name="name" placeholder="Name" required /><br>
-            <br> <input type="text" name="author" placeholder="Author" required /><br>
-            <br> <input type="text" name="genre" placeholder="Genre" required /><br>
-            <br><input type="text" name="pagecount" placeholder="Pages" required /><br>
-            <br><input type="text" name="publishers" placeholder="Published by" required /><br>
-            <br><input type="text" name="synopsis" placeholder="Synopsis" /><br>
-            <br><input type="submit" name="submit" value="Add this book" /> 
+            <h3> Enter your NID no to upgrade your account </h3>
+            <form name="seller" action="" method="post">
+            <br> <input type="text" maxlength="17" minlength="17" name="nid" placeholder="Enter 17 digit NID" required /><br>
+            <br><input type="submit" name="submit" value="Upgrade you account" /> 
             </form>
-            </div>
-            <!--<a href="signup.php" class="button">SIGN UP</a>-->
-            <?php 
+            </div><?php
+          }
+          ?>
+              <?php
+        }?>
+          
             
-    } ?>
-            
+    <!--<h2 class="w3-text-light-grey">Contact Me</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <div class="w3-section">
+      <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Chicago, US</p>
+      <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: +00 151515</p>
+      <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com</p>
+    </div><br>
+    
+    <p>Lets get in touch. Send me a message:</p>
+    <p><input class="w3-input w3-border w3-padding-16" type="text" placeholder="Name"></p>
+    <p><input class="w3-input w3-border w3-padding-16" type="text" placeholder="Email"></p>
+    <p><input class="w3-input w3-border w3-padding-16" type="text" placeholder="Subject"></p>
+    <p><input class="w3-input w3-border w3-padding-16" type="text" placeholder="Comment"></p>
+    <p><button class="w3-btn w3-light-grey w3-padding-large w3-hover-grey">
+      <i class="fa fa-paper-plane"></i> SEND MESSAGE
+    </button></p>-->
+    
+  <!-- End Contact Section -->
     <!--<h2 class="w3-text-light-grey">Contact Me</h2>
     <hr style="width:200px" class="w3-opacity">
 
@@ -571,42 +501,120 @@ if (isset($_REQUEST['name'])){
   <!-- End Contact Section -->
   </div>
   </div>
-  <div class="w3-padding-8 w3-content" id="Bbook">
-        <div id="conform">
-            <?php
-        require 'db.php';
-        
-        echo "<h2>Categories</h2>";
-       
-        
-        
-        global $con;
-        $query = "SELECT DISTINCT Genre AS Genre FROM books ORDER BY Genre";
-        $result = mysqli_query($con, $query);
-        mysqli_fetch_all($result, MYSQLI_ASSOC);
+  <div class="w3-content w3-padding-8 " id="UploadPhoto">
+      <div id="conform">
+     
+          <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <style>
+    
+    body{
+        text-align: left;
+     
+    }
 
-        foreach($result as $row)
-        {
-            $Gname = $row['Genre'];
-            $query = "SELECT COUNT(*) AS count FROM books WHERE Genre='$Gname'";
-            $res= mysqli_query($con, $query);
-            $r = mysqli_fetch_array($res);
-            $count = $r['count'];
-            $link = "showBooksofCategory.php?Cat_id=".$Gname;
-                echo "<table>";
-                echo "<tr>";
-                echo "<th><a href=$link><h3>$Gname($count)</h3></a></th>";
-               echo "</tr>";
-               echo "</table>";
-                
-        }
+input {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    
+}
+input:focus {
+    border: 3px solid #555;
+}
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #4CAF50;
+    width: 25%;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+</style>
+        <form method="post" enctype="multipart/form-data">
+    Select image to upload:
+    <table>
+            
+            image:<br> <input type="file" name="image" <br><br>
         
-        ?>
-        </div>
+<input type="submit" name="submit">
+        </table>
+       </form>
+        <?php
+        require 'db.php';
+        if(isset($_POST['submit']))
+        {
+        if(($_FILES['image']['tmp_name'])=='' || getimagesize($_FILES['image']['tmp_name'])==FALSE)
+             {
+                     echo "Select an image please ";
+              }
+            else
+             {
+        
+                $image_tmp = $_FILES['image']['tmp_name'];
+                $image_name = $_FILES['image']['name'];
+
+                $id = $_SESSION['id'];
+                $target = "uploads/user/" . $id . ".jpg";
+                //change target
+                $image = file_get_contents(addslashes($image_tmp));
+                $image = base64_encode($image);
+
+
+                global $con;
+
+                //echo '<img height="100" width="100" src="data:image;base64,'.$image.'" >';
+                /* $target = "C:/Users/HP/Documents/uploads/";
+                  $target = $target.basename($_FILES['image']['name']); */
+
+                move_uploaded_file($image_tmp, $target);
+                //update d3atabase
+                $sql = "UPDATE users SET Imagepath='$target' WHERE UserID = '$id'";
+//Writes the information to the database
+       $result=mysqli_query($con,$sql) ;
+       if($result){
+        echo "<h2>Image uploaded"."<br></h2>";
+        //echo '<img height="100" width="100" src="data:image;base64,'.$image.'" >';
+        
+        }
+       else{
+        echo "Image not uploaded";
+       }
+       //$row= mysqli_fetch_array($result);
+       //echo $row['image_tmp'];
+       //echo '<img height="100" width="100" src="data:image;base64,'.$row[2].'" >';
+
+      // echo "The file ".$image_name. " has been uploaded, and your information has been added to the directory";
+
+
+
+
+        
+}
+  }
+
+ ?>
+
+</body> 
+</html>
+
   </div>
-  
+  </div>
     <!-- Footer -->
-<!--  <footer class="w3-content w3-border-blue-gray w3-wide w3-padding-64 w3-text-black w3-xlarge ">
+  <footer class="w3-content w3-border-blue-gray w3-wide w3-padding-64 w3-text-black w3-xlarge ">
     <a href="#" class="w3-hover-text-indigo"><i class="fa fa-facebook-official"></i></a>
     <a href="#" class="w3-hover-text-red"><i class="fa fa-pinterest-p"></i></a>
     <a href="#" class="w3-hover-text-light-blue"><i class="fa fa-twitter"></i></a>
@@ -615,8 +623,8 @@ if (isset($_REQUEST['name'])){
     <p class="w3-large">Want to know <a href="about.php" class="w3-hover-text-green">about us?</a></p>
     <p class="w3-large">Have questions? Take a look at the <a href="forum.php" class="w3-hover-text-green">FAQ section</a></p>
 
-     End footer 
-  </footer>-->
+    <!-- End footer -->
+  </footer>
 
 <!-- END PAGE CONTENT -->
 

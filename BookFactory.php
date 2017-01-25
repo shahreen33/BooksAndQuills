@@ -25,9 +25,9 @@ class BookFactory
 
 
 
-    function getBook($name, $genre, $pagecount,$publishers,$synopsys)
+    function getBook($name, $author, $genre, $pagecount,$publishers,$synopsys)
     {
-       return new Books($name, $genre, $pagecount,$publishers,$synopsys);
+       return new Books($name,$author,  $genre, $pagecount,$publishers,$synopsys);
     }
     
     

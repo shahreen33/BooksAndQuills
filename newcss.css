@@ -1,26 +1,25 @@
 body {
-   background-image: url("back3.jpg");
+   background-image: url("back.jpg");
 }
 h1 {
-    color: white;
+    color: #3f51b5 ;
     font-family: verdana;
     font-size: 80px;
 }
 h2 {
-    color: white;
+    color: #3f51b5;
     font-family: verdana;
     font-size: 30px;
 }
 input[type=text] {
-    width: 30%;
+    width: 20%;
     margin: 5px 5px;
     box-sizing: w3-round;
     border-radius: 4px;
     border: 2px solid #ccc;
     font-size: 16px;
     background-color: white;
-    background-image: url('ic1.png');
-    background-position: 350px 2px;
+    background-position: 360px 2px;
     background-repeat: no-repeat;
     padding: 10px 15px 10px 15px;
 }
@@ -47,7 +46,6 @@ input[type=password] {
     border: 2px solid #ccc;
     font-size: 16px;
     background-color: white;
-    background-image: url('ic1.png');
     background-position: 360px 2px;
     background-repeat: no-repeat;
     padding: 0px 15px 10px 15px;
@@ -64,3 +62,4 @@ input[type=password] {
     margin: 5px 8px;
     cursor: pointer;
 }
+
